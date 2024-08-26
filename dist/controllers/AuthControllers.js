@@ -44,7 +44,7 @@ const login = async (req, res) => {
     }
     catch (e) {
         console.error(e);
-        return res.status(500).json({ msg: "Internal server error" });
+        return res.status(500).json({ msg: "Internal server error12345" });
     }
 };
 exports.login = login;
@@ -101,7 +101,7 @@ const adminlogin = async (req, res) => {
     }
     catch (e) {
         console.error(e);
-        return res.status(500).json({ msg: "Internal server error" });
+        return res.status(500).json({ msg: "Internal server error67890" });
     }
 };
 exports.adminlogin = adminlogin;
