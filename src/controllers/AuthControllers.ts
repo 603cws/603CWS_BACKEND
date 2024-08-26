@@ -40,8 +40,8 @@ export const login = async (req: Request, res: Response) => {
       cookie.serialize('token', token, {
         httpOnly: true,
         maxAge: 3600,
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'lax' is generally safe for CSRF protection
-        secure: process.env.NODE_ENV === 'production', // Ensure this is served over HTTPS in production
+        sameSite: 'none', // 'lax' is generally safe for CSRF protection
+        secure: true, // Ensure this is served over HTTPS in production
         path: '/', // Match this with logout // Use localhost for development
         domain: "603-cws-backend.vercel.app"
       })
@@ -61,8 +61,8 @@ export const logout = async (req: Request, res: Response) => {
       cookie.serialize('token', '', {
         httpOnly: true,
         expires: new Date(0), // Expire the cookie
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'lax' is generally safe for CSRF protection
-        secure: process.env.NODE_ENV === 'production', // Ensure this is served over HTTPS in production
+        sameSite: 'none', // 'lax' is generally safe for CSRF protection
+        secure: true, // Ensure this is served over HTTPS in production
         path: '/', // Match this with logout
         domain: "603-cws-backend.vercel.app"
       })
@@ -107,8 +107,8 @@ export const adminlogin = async (req: Request, res: Response) => {
       cookie.serialize('token', token, {
         httpOnly: true,
         maxAge: 3600, // 1 hour
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'lax' is generally safe for CSRF protection
-        secure: process.env.NODE_ENV === 'production', // Ensure this is served over HTTPS in production
+        sameSite: 'none', // 'lax' is generally safe for CSRF protection
+        secure: true, // Ensure this is served over HTTPS in production
         path: '/', // Match this with logout
         domain: "603-cws-backend.vercel.app"
       })
