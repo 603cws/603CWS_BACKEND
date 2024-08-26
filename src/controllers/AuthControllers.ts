@@ -50,7 +50,7 @@ export const login = async (req: Request, res: Response) => {
     return res.status(200).json({ msg: "User signed in", user, token });
   } catch (e) {
     console.error(e);
-    return res.status(500).json({ msg: "Internal server error12345" });
+    return res.status(500).json({ msg: "Internal server error12345", error : e });
   }
 };
 
@@ -117,6 +117,6 @@ export const adminlogin = async (req: Request, res: Response) => {
     return res.status(200).json({ msg: "Admin signed in", user: user.companyName });
   } catch (e) {
     console.error(e);
-    return res.status(500).json({ msg: "Internal server error67890" });
+    return res.status(500).json({ msg: "Internal server error67890", error : e });
   }
 };
