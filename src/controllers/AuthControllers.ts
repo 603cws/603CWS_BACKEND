@@ -42,8 +42,7 @@ export const login = async (req: Request, res: Response) => {
         maxAge: 3600,
         sameSite: 'none', // 'lax' is generally safe for CSRF protection
         secure: true, // Ensure this is served over HTTPS in production
-        path: '/', // Match this with logout // Use localhost for development
-        domain: "603-cws-backend.vercel.app"
+        path: '/',
       })
     );
 
@@ -64,7 +63,6 @@ export const logout = async (req: Request, res: Response) => {
         sameSite: 'none', // 'lax' is generally safe for CSRF protection
         secure: true, // Ensure this is served over HTTPS in production
         path: '/', // Match this with logout
-        domain: "603-cws-backend.vercel.app"
       })
     );
     return res.status(200).json({ msg: "User logged out successfully" });
@@ -110,7 +108,6 @@ export const adminlogin = async (req: Request, res: Response) => {
         sameSite: 'none', // 'lax' is generally safe for CSRF protection
         secure: true, // Ensure this is served over HTTPS in production
         path: '/', // Match this with logout
-        domain: "603-cws-backend.vercel.app"
       })
     );
 
