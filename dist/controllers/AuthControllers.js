@@ -38,6 +38,7 @@ const login = async (req, res) => {
             sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax', // 'lax' is generally safe for CSRF protection
             secure: process.env.NODE_ENV === 'production', // Ensure this is served over HTTPS in production
             path: '/', // Match this with logout // Use localhost for development
+            domain: "603-cws-backend.vercel.app"
         }));
         return res.status(200).json({ msg: "User signed in", user, token });
     }
@@ -55,6 +56,7 @@ const logout = async (req, res) => {
             sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax', // 'lax' is generally safe for CSRF protection
             secure: process.env.NODE_ENV === 'production', // Ensure this is served over HTTPS in production
             path: '/', // Match this with logout
+            domain: "603-cws-backend.vercel.app"
         }));
         return res.status(200).json({ msg: "User logged out successfully" });
     }
@@ -93,6 +95,7 @@ const adminlogin = async (req, res) => {
             sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax', // 'lax' is generally safe for CSRF protection
             secure: process.env.NODE_ENV === 'production', // Ensure this is served over HTTPS in production
             path: '/', // Match this with logout
+            domain: "603-cws-backend.vercel.app"
         }));
         return res.status(200).json({ msg: "Admin signed in", user: user.companyName });
     }
