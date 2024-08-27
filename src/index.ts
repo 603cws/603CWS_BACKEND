@@ -22,6 +22,7 @@ app.use(express.json());
 let allowedOrigins: string[];
 
   allowedOrigins = [
+    "https://www.603thecoworkingspace.com",
     "https://603-cws-frontend.vercel.app",
     'https://603coworkingspace-piyush-joshis-projects.vercel.app',
     'http://localhost:5173'

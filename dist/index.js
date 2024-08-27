@@ -22,6 +22,7 @@ dotenv_1.default.config({ path: "backend/.env" });
 app.use(express_1.default.json());
 let allowedOrigins;
 allowedOrigins = [
+    "https://www.603thecoworkingspace.com",
     "https://603-cws-frontend.vercel.app",
     'https://603coworkingspace-piyush-joshis-projects.vercel.app',
     'http://localhost:5173'
