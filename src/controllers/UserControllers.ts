@@ -23,7 +23,7 @@ export const createuser = async (req: Request, res: Response) => {
   }
 
   try {
-    const { companyName, email, password, phone, username, country, state, zipcode, city, creditsleft, monthlycredits, location } = body;
+    const { companyName, email, password, phone, username, country, state, zipcode, city, monthlycredits, location } = body;
 
     const usernameExists = await UserModel.findOne({ username });
     if (usernameExists) {
@@ -50,7 +50,7 @@ export const createuser = async (req: Request, res: Response) => {
       zipcode,
       location,
       city,
-      creditsleft,
+      creditsleft : monthlycredits,
       monthlycredits,
       createdAt: Date.now(),
     });
