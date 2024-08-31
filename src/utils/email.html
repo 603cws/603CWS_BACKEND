@@ -30,7 +30,7 @@
       color: #ffffff;
       padding: 20px;
       text-align: center;
-      border-radius: 4px 4px 0 0;
+      border-radius: 8px 8px 0 0;
     }
 
     .header img {
@@ -45,14 +45,27 @@
     }
 
     .content h3 {
-      font-size: 23px;
+      font-size: 24px;
       color: #4CAF50;
+      margin-top: 0;
+      margin-bottom: 15px;
     }
 
     .content p {
       font-size: 16px;
       line-height: 1.6;
       margin: 0 0 15px;
+    }
+
+    .content ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .content li {
+      margin-bottom: 10px;
     }
 
     .content strong {
@@ -65,6 +78,7 @@
       font-size: 14px;
       color: #888888;
       border-top: 1px solid #e0e0e0;
+      margin-top: 20px;
     }
 
     .footer a {
@@ -77,26 +91,22 @@
 <body>
   <div class="email-container">
     <div class="header">
-      <img src="logo.webp"
-        alt="Your Company Logo">
+      <img src="https://www.603thecoworkingspace.com/logo/logo.png" alt="Your Company Logo">
     </div>
     <div class="content">
-      <h3><strong>Booking confirmed successfully!</strong></h3>
+      <h3><strong>Booking Confirmed Successfully!</strong></h3>
       <p>Dear {{name}},</p>
-      <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-        <p>We are pleased to confirm your room booking as per the following details:</p>
-        <ul style="list-style-type: none; padding: 0; font-size: 16px;">
-          <li><strong>Location:</strong> {{place}}</li>
-          <li><strong>Date:</strong> {{date}}</li>
-          <li><strong>Time:</strong> {{startTime}} - {{endTime}}</li>
-        </ul>
-        <p>Thank you for choosing our services. We look forward to hosting you.</p>
-        <p>Sincerely,<br><b>603 The Coworking Space India</b></p>
-      </div>
+      <p>We are pleased to confirm your room booking with the following details:</p>
+      <ul>
+        <li><strong>Location:</strong> {{place}}</li>
+        <li><strong>Date:</strong> {{date}}</li>
+        <li><strong>Time:</strong> {{startTime}} - {{endTime}}</li>
+      </ul>
+      <p>Thank you for choosing our services. We look forward to hosting you.</p>
+      <p>Sincerely,<br><b>603 The Coworking Space India</b></p>
     </div>
     <div class="footer">
-      <p>&copy; 2024 603 The Coworking Space India. All rights reserved. | <a
-          href="https://www.603thecoworkingspace.com">Visit our website</a></p>
+      <p>&copy; 2024 603 The Coworking Space India. All rights reserved. | <a href="https://www.603thecoworkingspace.com">Visit our website</a></p>
     </div>
   </div>
 </body>
