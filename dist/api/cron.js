@@ -14,6 +14,7 @@ async function connectToDatabase() {
 }
 async function cronHandler(req, res) {
     await connectToDatabase();
+    console.log("cron connected");
     try {
         console.log("Cron job executed at:", new Date().toISOString());
         // Update all users' creditsleft to be equal to their monthlycredits

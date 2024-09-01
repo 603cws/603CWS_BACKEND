@@ -12,7 +12,7 @@ async function connectToDatabase() {
 
 export async function cronHandler(req: Request, res: Response) {
   await connectToDatabase();
-
+  console.log("cron connected");
   try {
     console.log("Cron job executed at:", new Date().toISOString());
 
