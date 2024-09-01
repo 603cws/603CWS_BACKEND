@@ -2,7 +2,7 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import mongoose from 'mongoose';
 import { UserModel } from '../src/models/user.model'; // Adjust the import path as necessary
 
-const MONGODB_URI = process.env.MONGODB_URI; // Your MongoDB URI
+const MONGODB_URI = process.env.DB_URL; // Your MongoDB URI
 
 async function connectToDatabase() {
   if (mongoose.connection.readyState === 1) return; // Already connected

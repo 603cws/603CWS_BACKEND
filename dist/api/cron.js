@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = handler;
 const mongoose_1 = __importDefault(require("mongoose"));
 const user_model_1 = require("../src/models/user.model"); // Adjust the import path as necessary
-const MONGODB_URI = process.env.MONGODB_URI; // Your MongoDB URI
+const MONGODB_URI = process.env.DB_URL; // Your MongoDB URI
 async function connectToDatabase() {
     if (mongoose_1.default.connection.readyState === 1)
         return; // Already connected
