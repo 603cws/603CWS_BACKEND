@@ -14,6 +14,7 @@ const ServiceRoute_1 = __importDefault(require("./routes/ServiceRoute"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const SpaceRoute_1 = __importDefault(require("./routes/SpaceRoute"));
 const creditRoute_1 = __importDefault(require("./routes/creditRoute"));
+const cron_1 = require("../api/cron"); // Import your cron handler
 const app = (0, express_1.default)();
 app.use((0, cookie_parser_1.default)());
 const port = process.env.PORT || 3000;
@@ -44,6 +45,8 @@ app.use("/api/v1/bookings", BookingRoutes_1.default);
 app.use("/api/v1/auth", AuthRoutes_1.default);
 app.use("/api/v1/users", UserRoutes_1.default);
 app.use("/api/v1/credits", creditRoute_1.default);
+// Define the cron route
+app.get("/api/cron", cron_1.cronHandler);
 app.get("/", (req, res) => {
     console.log("Root URL accessed");
     res.send("Welcome to the API");

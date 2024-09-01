@@ -9,6 +9,7 @@ import ServiceRoutes from "./routes/ServiceRoute";
 import cookieParser from 'cookie-parser';
 import SpaceRoutes from './routes/SpaceRoute';
 import creditRoutes from "./routes/creditRoute";
+import { cronHandler } from '../api/cron'; // Import your cron handler
 
 const app = express();
 app.use(cookieParser());
@@ -21,14 +22,12 @@ app.use(express.json());
 
 let allowedOrigins: string[];
 
-  allowedOrigins = [
-    "https://www.603thecoworkingspace.com",
-    "https://603-cws-frontend.vercel.app",
-    'https://603coworkingspace-piyush-joshis-projects.vercel.app',
-    'http://localhost:5173'
-  ];
-
-
+allowedOrigins = [
+  "https://www.603thecoworkingspace.com",
+  "https://603-cws-frontend.vercel.app",
+  'https://603coworkingspace-piyush-joshis-projects.vercel.app',
+  'http://localhost:5173'
+];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -47,6 +46,9 @@ app.use("/api/v1/bookings", BookingRoutes);
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/users", UserRoutes);
 app.use("/api/v1/credits", creditRoutes);
+
+// Define the cron route
+app.get("/api/cron", cronHandler);
 
 app.get("/", (req: Request, res: Response) => {
   console.log("Root URL accessed");

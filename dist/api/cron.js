@@ -3,16 +3,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = handler;
+exports.cronHandler = cronHandler;
 const mongoose_1 = __importDefault(require("mongoose"));
-const user_model_1 = require("../src/models/user.model"); // Adjust the import path as necessary
-const MONGODB_URI = process.env.DB_URL; // Your MongoDB URI
+const user_model_1 = require("../src/models/user.model");
+const MONGODB_URI = process.env.DB_URL;
 async function connectToDatabase() {
     if (mongoose_1.default.connection.readyState === 1)
         return; // Already connected
     await mongoose_1.default.connect(MONGODB_URI);
 }
-async function handler(req, res) {
+async function cronHandler(req, res) {
     await connectToDatabase();
     try {
         console.log("Cron job executed at:", new Date().toISOString());

@@ -1,17 +1,18 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+// src/cron/cronHandler.ts
+import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { UserModel } from '../src/models/user.model'; // Adjust the import path as necessary
+import { UserModel } from '../src/models/user.model';
 
-const MONGODB_URI = process.env.DB_URL; // Your MongoDB URI
+const MONGODB_URI = process.env.DB_URL;
 
 async function connectToDatabase() {
   if (mongoose.connection.readyState === 1) return; // Already connected
   await mongoose.connect(MONGODB_URI as string);
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export async function cronHandler(req: Request, res: Response) {
   await connectToDatabase();
-  
+
   try {
     console.log("Cron job executed at:", new Date().toISOString());
 
