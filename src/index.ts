@@ -46,13 +46,19 @@ app.get("/api/cron", cronHandler);
 app.get('/set-cookie', (req, res) => {
   res.cookie('thirdPartyToken', 'exampleToken', {
     httpOnly: true,
-    maxAge: 3600,
+    maxAge: 3600000, // 1 hour in milliseconds
     sameSite: 'none',
     secure: true,
     path: '/',
     domain: ".603-cws-backend.vercel.app"
   });
   res.send('Third-party cookie has been set.');
+});
+
+// Endpoint to check if the cookie is set
+app.get('/check-cookies', (req, res) => {
+  const cookiesEnabled = req.cookies && req.cookies.thirdPartyToken === 'exampleToken';
+  res.json({ cookiesEnabled });
 });
 
 app.use("/api/v1/services", ServiceRoutes);

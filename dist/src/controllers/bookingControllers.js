@@ -185,9 +185,9 @@ const updateBookingStatus = async (req, res) => {
 exports.updateBookingStatus = updateBookingStatus;
 // Delete a booking
 const deleteBooking = async (req, res) => {
-    const bookingId = req.params.id;
+    const id = req.params.id; // Extract ID from URL params
     try {
-        const deletedBooking = await booking_model_1.BookingModel.findByIdAndDelete(bookingId);
+        const deletedBooking = await booking_model_1.BookingModel.findByIdAndDelete(id);
         if (!deletedBooking) {
             return res.status(404).json({ message: "Booking not found" });
         }

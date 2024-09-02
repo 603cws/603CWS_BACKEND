@@ -211,10 +211,11 @@ export const updateBookingStatus = async (req: Request, res: Response) => {
 };
 
 // Delete a booking
+
 export const deleteBooking = async (req: Request, res: Response) => {
-  const bookingId = req.params.id;
+  const id = req.params.id; // Extract ID from URL params
   try {
-    const deletedBooking = await BookingModel.findByIdAndDelete(bookingId);
+    const deletedBooking = await BookingModel.findByIdAndDelete(id);
     if (!deletedBooking) {
       return res.status(404).json({ message: "Booking not found" });
     }
@@ -223,6 +224,7 @@ export const deleteBooking = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error deleting booking", error });
   }
 };
+
 
 
 export const allbookingbyadmin = async (req: Request, res: Response) => {
