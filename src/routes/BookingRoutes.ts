@@ -21,7 +21,7 @@ router.get("/", protect, getAllBookings);
 router.get("/:id", protect, getBookingById);
 router.get("/user/:id", protect, getBookingsByUserId);
 router.put("/:id", protect, updateBookingStatus);
-router.delete("/admin/deletebooking", admin, deleteBooking);
+router.post("/admin/deletebooking", admin, deleteBooking);
 
 
 export default router;
