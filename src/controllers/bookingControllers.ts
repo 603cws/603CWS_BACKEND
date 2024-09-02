@@ -213,7 +213,7 @@ export const updateBookingStatus = async (req: Request, res: Response) => {
 // Delete a booking
 
 export const deleteBooking = async (req: Request, res: Response) => {
-  const {id} = req.body; // Extract ID from URL params
+  const { id } = req.body; // Extract ID from req.body
   try {
     const deletedBooking = await BookingModel.findByIdAndDelete(id);
     if (!deletedBooking) {
