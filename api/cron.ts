@@ -16,7 +16,6 @@ export async function cronHandler(req: Request, res: Response) {
   try {
     console.log("Cron job executed at:", new Date().toISOString());
 
-    // Update all users' creditsleft to be equal to their monthlycredits
     const result = await UserModel.updateMany(
       {},
       [{ $set: { creditsleft: { $toDouble: "$monthlycredits" } } }]

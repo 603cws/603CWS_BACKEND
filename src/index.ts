@@ -43,6 +43,18 @@ app.use(cors({
 
 app.get("/api/cron", cronHandler);
 
+app.get('/set-cookie', (req, res) => {
+  res.cookie('thirdPartyToken', 'exampleToken', {
+    httpOnly: true,
+    maxAge: 3600,
+    sameSite: 'none',
+    secure: true,
+    path: '/',
+    domain: ".603-cws-backend.vercel.app"
+  });
+  res.send('Third-party cookie has been set.');
+});
+
 app.use("/api/v1/services", ServiceRoutes);
 app.use("/api/v1/spaces", SpaceRoutes);
 app.use("/api/v1/bookings", BookingRoutes);

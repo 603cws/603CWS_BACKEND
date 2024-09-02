@@ -17,7 +17,6 @@ async function cronHandler(req, res) {
     console.log("cron connected");
     try {
         console.log("Cron job executed at:", new Date().toISOString());
-        // Update all users' creditsleft to be equal to their monthlycredits
         const result = await user_model_1.UserModel.updateMany({}, [{ $set: { creditsleft: { $toDouble: "$monthlycredits" } } }]);
         console.log(`Matched ${result.matchedCount} documents and modified ${result.modifiedCount} documents`);
         res.status(200).json({ message: 'Cron job executed successfully' });
