@@ -21,18 +21,17 @@ const port = process.env.PORT || 3000;
 dotenv_1.default.config({ path: "backend/.env" });
 (0, dbconnect_1.default)().catch(err => console.error("Database connection error:", err));
 app.use(express_1.default.json());
-
-const allowedOrigins = [
+let allowedOrigins;
+allowedOrigins = [
     "https://www.603thecoworkingspace.com",
     "https://603-cws-frontend.vercel.app",
     'https://603coworkingspace-piyush-joshis-projects.vercel.app',
     'http://localhost:5173'
 ];
-
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
         console.log("Request Origin:", origin);
-        if (allowedOrigins.includes(origin) || !origin) {
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         }
         else {
@@ -41,26 +40,22 @@ app.use((0, cors_1.default)({
     },
     credentials: true,
 }));
-
-app.get("/api/cron", cron_1.cronHandler); // Add your cron handler route here
+app.get("/api/cron", cron_1.cronHandler);
 app.use("/api/v1/services", ServiceRoute_1.default);
 app.use("/api/v1/spaces", SpaceRoute_1.default);
 app.use("/api/v1/bookings", BookingRoutes_1.default);
 app.use("/api/v1/auth", AuthRoutes_1.default);
 app.use("/api/v1/users", UserRoutes_1.default);
 app.use("/api/v1/credits", creditRoute_1.default);
-
 app.get("/", (req, res) => {
     console.log("Root URL accessed");
     res.send("Welcome to the API");
 });
-
 // Catch-all route for undefined routes
 app.use((req, res) => {
     console.log("Undefined route accessed:", req.originalUrl);
     res.status(404).send("Route not found");
 });
-
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
