@@ -47,7 +47,6 @@ app.use("/api/v1/bookings", BookingRoutes_1.default);
 app.use("/api/v1/auth", AuthRoutes_1.default);
 app.use("/api/v1/users", UserRoutes_1.default);
 app.use("/api/v1/credits", creditRoute_1.default);
-// Define the cron route
 app.get("/", (req, res) => {
     console.log("Root URL accessed");
     res.send("Welcome to the API");

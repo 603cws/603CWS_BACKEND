@@ -52,7 +52,6 @@ app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/users", UserRoutes);
 app.use("/api/v1/credits", creditRoutes);
 
-// Define the cron route
 
 app.get("/", (req: Request, res: Response) => {
   console.log("Root URL accessed");
