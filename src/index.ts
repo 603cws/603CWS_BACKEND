@@ -21,7 +21,7 @@ dbconnect().catch(err => console.error("Database connection error:", err));
 app.use(express.json());
 
 let allowedOrigins: string[];
-
+//new chages made
 allowedOrigins = [
   "https://www.603thecoworkingspace.com",
   "https://603-cws-frontend.vercel.app",
@@ -42,8 +42,11 @@ app.use(cors({
 }));
 
 
+
 app.get("/api/cron", cronHandler);
+
 app.use("/api/v1/services", ServiceRoutes);
+
 app.use("/api/v1/spaces", SpaceRoutes);
 app.use("/api/v1/bookings", BookingRoutes);
 app.use("/api/v1/auth", AuthRoutes);
