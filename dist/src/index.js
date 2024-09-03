@@ -30,7 +30,8 @@ allowedOrigins = [
 ];
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
+        console.log("Request Origin:", origin);
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         }
         else {

@@ -31,7 +31,8 @@ allowedOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin!) || !origin) {
+    console.log("Request Origin:", origin);
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -39,6 +40,7 @@ app.use(cors({
   },
   credentials: true,
 }));
+
 
 
 app.get("/api/cron", cronHandler);
